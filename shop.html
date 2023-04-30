@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+
+  </style>
+</head>
+
+  <title>My Website</title>
+  <script>
+
+    function updateTime() {
+      var now = new Date();
+      var timeElem = document.getElementById("time");
+      timeElem.innerHTML = now.toLocaleTimeString();
+    }
+    setInterval(updateTime, 1000); // update time every second
+  </script>
+
+
+<body>
+  <body style="background-color: #fde09e;"></body>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Efiemaron Oparison</h1>
+  <p>Neccessary information to learn about Efiemaron Oparison</p> 
+  <p>The current time is: <span id="time"></span></p>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Navigation bar</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mywork.html">My Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="active" href="#shop">Shop</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+
+
+        <h1>Ice Cream Shop</h1>
+        <img class="shop-item-image" src="vanilla.jpeg" alt="vanilla" width="200" height="200">
+        <h4>VANILLA</h4>
+        <img class="shop-item-image" src="chocolate.jpeg" alt="chocolate" width="200" height="200">
+        <h4>CHOCOLATE</h4>
+        <img class="shop-item-image" src="strawberry.jpeg" alt="vanilla" width="200" height="200">
+        <h4>STRAWBERRY</h4>
+        <img class="shop-item-image" src="orange.jpeg" alt="vanilla" width="200" height="200">
+        <h4>ORANGE</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Flavor</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vanilla</td>
+              
+              
+              <td>$2.50</td>
+              <td><input type="number" value="0" min="0" max="10" id="vanilla"></td>
+              <td id="vanillaTotal">$0.00</td>
+             
+            </tr>
+            <tr>
+              <td>Chocolate</td>
+              <td>$3.00</td>
+              <td><input type="number" value="0" min="0" max="10" id="chocolate"></td>
+              <td id="chocolateTotal">$0.00</td>
+            </tr>
+            <tr>
+              <td>Strawberry</td>
+              <td>$3.50</td>
+              <td><input type="number" value="0" min="0" max="10" id="strawberry"></td>
+              <td id="strawberryTotal">$0.00</td>
+              
+            </tr>
+            <tr>
+              <td>Orange</td>
+              <td>$4.00</td>
+              <td><input type="number" value="0" min="0" max="10" id="orange"></td>
+              <td id="orangeTotal">$0.00</td>
+            </tr>
+            <tr class="total">
+              <td colspan="3">Total:</td>
+              <td id="total">$0.00</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <button onclick="purchase()">Purchase</button>
+      
+        <script>
+              function updateTotal() {
+                  let vanillaQuantity = document.getElementById("vanilla").value;
+                  let chocolateQuantity = document.getElementById("chocolate").value;
+                  let strawberryQuantity = document.getElementById("strawberry").value;
+                  let orangeQuantity = document.getElementById("orange").value;
+                  let vanillaPrice = 2.5;
+                  let chocolatePrice = 3.0;
+                  let strawberryPrice = 3.5;
+                  let orangePrice = 4.0;
+                  let vanillaTotal = vanillaQuantity * vanillaPrice;
+                  let chocolateTotal = chocolateQuantity * chocolatePrice;
+                  let strawberryTotal = strawberryQuantity * strawberryPrice;
+                  let orangeTotal = orangeQuantity * orangePrice;
+                  let total = vanillaTotal + chocolateTotal + strawberryTotal + orangeTotal;
+                  document.getElementById("vanillaTotal").innerHTML = "$" + vanillaTotal.toFixed(2);
+                  document.getElementById("chocolateTotal").innerHTML = "$" + chocolateTotal.toFixed(2);
+                  document.getElementById("strawberryTotal").innerHTML = "$" + strawberryTotal.toFixed(2);
+                  document.getElementById("orangeTotal").innerHTML = "$" + orangeTotal.toFixed(2);
+                  document.getElementById("total").innerHTML = "$" + total.toFixed(2);
+              }
+          
+              function purchase() {
+                  alert("Thank you for your purchase!");
+              }
+          
+              let inputs = document.querySelectorAll("input");
+              for (let i = 0; i < inputs.length; i++) {
+                  inputs[i].addEventListener("change", updateTotal);
+              }
+          </script>
+      <script>
+        $(document).ready(function(){
+          $(window).scroll(function(){
+            $(".fade").each(function(){
+              var pos = $(this).offset().top;
+              var winTop = $(window).scrollTop();
+              if (pos < winTop + $(window).height()){
+                $(this).addClass("fade-in");
+              }
+            });
+          });
+        });
+        </script>
+        
+        <style>
+          footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #f5f5f5;
+   color: #777;
+   padding: 20px;
+}
+          
+        .fade {
+          opacity: 0;
+          transition: opacity 1s ease;
+        }
+        
+        .fade-in {
+          opacity: 1;
+        }
+        </style>
+        
+      <div class="col-sm-8"
+    
+      <html lang="en">
+        <head>
+          <title>Bootstrap Website Example</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        
+            
+              
+        
+  <div class="jumbotron text-center" style="margin-bottom:0">
+      <p>MARCH MADNESS ICECREAM SALE!!!</p>
+      <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+      <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Footer</p>
+        <footer>
+          <p id="footNote"> Designed & Built by Efiemaron Oparison</p>
+              <div class="social-icon">
+                  
+                <button onclick="window.location.href='https://twitter.com/elonmusk'">Twitter</button>
+      
+                            <button onclick="window.location.href='https://www.linkedin.com/in/efiemaron-undefined-b21144252/'">Linkedin</button>
+      
+                            <button onclick="window.location.href='https://www.instagram.com/efie.maron/'">Instagram</button>
+      
+                            
+                 <a href="#">
+                  <i id="github" class="fab fa-github center">
+      
+                  </i>   
+                  </a>  
+       </div>                  
+        </footer>
+      
+    
+    
+    </body>
+    </html>
+    
